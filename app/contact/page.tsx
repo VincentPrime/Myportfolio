@@ -18,6 +18,7 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
   const [menuOpen, setMenuOpen] = useState(false)
+  const API = process.env.NEXT_PUBLIC_API_URL;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -29,7 +30,7 @@ export default function Contact() {
     setStatus("");
 
     try {
-      const res = await fetch("http://localhost:4000/api/send-email", {
+      const res = await fetch(`${API}http://localhost:4000/api/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
