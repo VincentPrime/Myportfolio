@@ -14,7 +14,42 @@ import { motion } from "framer-motion";
 import { Icon } from '@iconify-icon/react';
 
 export default function Contact() {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState("");
   const [menuOpen, setMenuOpen] = useState(false)
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus("");
+
+    try {
+      const res = await fetch("http://localhost:4000/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus("✅ Email sent successfully!");
+        alert("✅ Email sent successfully!")
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus("❌ Failed to send email.");
+      }
+    } catch (error) {
+      setStatus("❌ Something went wrong.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="relative w-full min-h-screen overflow-x-hidden overflow-y-auto">
@@ -74,7 +109,7 @@ export default function Contact() {
         <div className="w-full">
           <Card className="bg-[#ff2121] text-white border-none">
             <CardContent>
-              <form className="flex flex-col gap-4">
+              <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <CardTitle className="font-bold text-3xl md:text-4xl">
                   Contact me!
                 </CardTitle>
@@ -82,7 +117,11 @@ export default function Contact() {
                 <div>
                   <Label className="font-bold">Name:</Label>
                   <Input
+                    type="text"
+                    name="name"
                     placeholder="Name:"
+                    value={form.name}
+                    onChange={handleChange}
                     className="bg-white text-black mt-2"
                   />
                 </div>
@@ -92,6 +131,9 @@ export default function Contact() {
                   <Input
                     placeholder="Enter your Email"
                     type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
                     className="bg-white text-black mt-2"
                   />
                 </div>
@@ -99,12 +141,15 @@ export default function Contact() {
                 <div>
                   <Label>Message:</Label>
                   <Textarea
+                    name="message"
                     placeholder="Your Message"
+                    value={form.message}
+                    onChange={handleChange}
                     className="bg-white text-black mt-2"
                   />
                 </div>
 
-                <Button className="w-full bg-[#0a50ff] hover:bg-[#1647c1] cursor-pointer mt-2">
+                <Button className="w-full bg-[#0a50ff] hover:bg-[#1647c1] cursor-pointer mt-2" type="submit">
                   Send Message <SendIcon className="ml-2" />
                 </Button>
               </form>
