@@ -1,103 +1,289 @@
+"use client";
+
+import { useState } from "react";
+import TextType from "@/components/Reactbits/texttype";
+import { StarsBackground } from "@/components/animate-ui/backgrounds/stars";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import ClickSpark from "@/components/Reactbits/Clickspark";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Menu, X } from "lucide-react";
+import { Icon } from '@iconify-icon/react';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [menuOpen, setMenuOpen] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div>
+      {/* Hero Section */}
+      <div className="relative w-full min-h-screen overflow-x-hidden">
+        <div className="relative z-10 w-full py-6">
+          <header className="text-white flex justify-between items-center px-6 md:px-40">
+            <h1 className="font-extrabold text-2xl md:text-3xl">PORTFOLIO</h1>
+
+            {/* Desktop Menu */}
+            <nav className="hidden md:block">
+              <ul className="flex gap-7 font-bold text-lg md:text-2xl">
+                <li><a href="/"><ClickSpark>Home</ClickSpark></a></li>
+                <li><a href="/aboutme"><ClickSpark>About me</ClickSpark></a></li>
+                <li><a href="/contact"><ClickSpark>Contact me</ClickSpark></a></li>
+              </ul>
+            </nav>
+
+            {/* Hamburger Button (Mobile) */}
+            <button
+              className="md:hidden focus:outline-none"
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? <X size={32} /> : <Menu size={32} />}
+            </button>
+          </header>
+
+          {/* Mobile Menu Overlay */}
+
+        {menuOpen && (
+          <div className="md:hidden  w-full bg-[#111] text-white py-6 shadow-lg z-50">
+            <ul className="flex flex-col items-center gap-6 font-bold text-lg">
+              <li>
+                <a href="/" onClick={() => setMenuOpen(false)}>
+                  <ClickSpark>Home</ClickSpark>
+                </a>
+              </li>
+              <li>
+                <a href="/aboutme" onClick={() => setMenuOpen(false)}>
+                  <ClickSpark>About me</ClickSpark>
+                </a>
+              </li>
+              <li>
+                <a href="/contact" onClick={() => setMenuOpen(false)}>
+                  <ClickSpark>Contact me</ClickSpark>
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
+
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        {/* Background */}
+        <div className="absolute inset-0 -z-10">
+          <StarsBackground />
+        </div>
+      {/* Foreground Content */}
+      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between text-white px-6 md:px-40 mt-20 gap-20">
+        {/* Text Section */}
+        <div className="max-w-6xl">
+          <div>
+            <span className="font-extrabold text-lg sm:text-xl md:text-2xl">
+              <TextType text="Hi I’m Vincent!" />
+            </span>
+          </div>
+
+          <motion.div
+            className="flex items-center mt-2"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <div>
+                <p className="font-extrabold text-lg sm:text-xl md:text-3xl lg:text-4xl leading-snug">
+                a <span className="text-amber-600">Web Developer </span>
+                and a Full-Stack Developer. I build modern, responsive, and
+                scalable applications that bring ideas to life.
+              </p>
+
+              {/* Shaking Button */}
+              <motion.button
+                className="font-extrabold text-base sm:text-lg md:text-2xl bg-blue-700 rounded p-2 mt-5 cursor-pointer"
+                animate={{ x: [0, -5, 5, -5, 5, 0] }}
+                transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 1.5 }}
+              >
+                <a href="/contact"><ClickSpark>Hire me</ClickSpark></a>
+              </motion.button>
+
+              <a href="/vincent-cv.pdf" download="vincent-cv.pdf">
+                <span className="font-bold ml-2 hover:border-b cursor-pointer text-sm sm:text-base md:text-lg">
+                  Download CV
+                </span>
+              </a>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Image Section */}
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <div className="w-70 h-70 sm:w-70 sm:h-70 md:w-100 md:h-100 overflow-hidden rounded-full border-2 border-gray-500 shadow-lg">
+            <Image
+              src="/vincent.png"
+              alt="vincent"
+              width={300}
+              height={300}
+              className="object-cover w-full h-full"
+            />
+          </div>
+        </motion.div>
+      </div>
+
+
+      </div>
+
+      {/* Tech Stack Section */}
+      <div className="px-6 md:px-40 py-20 text-black">
+        <motion.div
+          className="justify-self-center border-4 rounded-2xl border-black p-5 hover:bg-orange-500 hover:text-white transition-colors duration-300 cursor-pointer"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <h2 className="text-2xl md:text-3xl font-bold">Tech Stack</h2>
+        </motion.div>
+
+        <div className="justify-self-center w-full">
+          <ul className="flex flex-col">
+            <motion.div
+              className="flex justify-evenly mb-10 mt-20 flex-wrap gap-6"
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ amount: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <li><Image src="/mysql.png" alt="" width={80} height={80} /></li>
+              <li><Image src="/figma.png" alt="" width={80} height={80} /></li>
+              <li><Image src="/react.png" alt="" width={80} height={80} /></li>
+              <li><Image src="/next.png" alt="" width={80} height={80} /></li>
+            </motion.div>
+
+            <motion.div
+              className="flex justify-evenly items-center flex-wrap gap-6"
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ amount: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <li><Image src="/github.png" alt="" width={80} height={80} /></li>
+              <li><Image src="/node.png" alt="" width={80} height={80} /></li>
+              <li><Image src="/javascript.png" alt="" width={80} height={80} /></li>
+              <li><Image src="/tailwind.png" alt="" width={80} height={80} /></li>
+            </motion.div>
+          </ul>
+        </div>
+      </div>
+
+      {/* Projects Section */}
+      <div className="text-white relative w-full min-h-screen overflow-x-hidden p-6 md:p-20">
+        <div className="justify-self-center">
+          <h1 className="font-extrabold text-4xl md:text-7xl">Featured Projects</h1>
+        </div>
+
+        <div className="absolute inset-0 -z-10">
+          <StarsBackground />
+        </div>
+
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between text-white px-6 md:px-40 gap-10 mt-10">
+          <Card>
+            <CardHeader></CardHeader>
+          </Card>
+          <Card></Card>
+          <Card></Card>
+        </div>
+      </div>
+
+
+      <footer>
+      <Card className="bg-[#363636] w-full rounded-none border-none text-white p-10">
+        <div className="flex flex-col md:flex-row justify-evenly">
+          <CardContent>
+            
+
+           
+             <motion.div
+            className="w-60 h-60 rounded-full overflow-hidden border-4 border-[#14d911] flex items-center justify-center shadow-lg"
+            animate={{
+                 borderRadius: [
+                    "60% 40% 55% 45%",
+                    "45% 60% 40% 55%",
+                    "55% 45% 60% 40%",
+                    "50% 65% 35% 50%",
+                    "60% 40% 55% 45%",
+                ],
+            }}
+            transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+            }}
+            >
+            <Image
+                src="/vincent.png"
+                alt="Profile"
+                width={160}
+                height={160}
+                className="object-cover w-full h-full"
+            />
+            </motion.div>
+          </CardContent>
+
+          <CardContent>
+          <p className="font-bold text-2xl mb-2">Tech Stacks</p> 
+          <ul className="font-semibold list-disc">
+            <li className="hover:text-[#14d911]">React</li>
+            <li className="hover:text-[#14d911]">Node & Express.js</li>
+            <li className="hover:text-[#14d911]">MySQL</li>
+            <li className="hover:text-[#14d911]">Next.js</li>
+            <li className="hover:text-[#14d911]">Figma</li>
+            <li className="hover:text-[#14d911]">tailwindcss</li>
+            <li className="hover:text-[#14d911]">Github</li>
+            <li className="hover:text-[#14d911]">Javascript</li>
+          </ul> 
+          </CardContent>
+
+          <CardContent >
+          <p className="font-bold text-2xl mb-2">CONTACT ME!</p>
+          <ul className="flex flex-col gap-2">
+                <li className="flex items-center font-medium text-lg hover:text-[#14d911] gap-2">
+                        <motion.div
+                            whileHover={{
+                                rotate: [0, -10, 10, -10, 10, 0], // shaking effect
+                                transition: { duration: 0.6 },   // speed of shake
+                            }}
+                            >
+                        <Icon icon="fluent:mail-28-filled" width="40" height="40" />
+                        </motion.div>
+                         fillar.vincent02@gmail.com
+                </li>
+                <li className="flex items-center font-medium text-lg hover:text-[#14d911] gap-2">
+                    <motion.div
+                        whileHover={{
+                            rotate: [0, -10, 10, -10, 10, 0], // shaking effect
+                            transition: { duration: 0.6 },   // speed of shake
+                        }}
+                    >
+                    <Icon icon="majesticons:phone-line" width="40" height="40" />
+                    </motion.div>
+                    +63 947-460-5787
+                </li>
+                <li className="flex items-center font-medium text-lg hover:text-[#14d911] gap-2">
+                    <motion.div
+                      whileHover={{
+                            rotate: [0, -10, 10, -10, 10, 0], // shaking effect
+                            transition: { duration: 0.6 },   // speed of shake
+                        }}
+                    >
+                    <Icon icon="fa-solid:file-pdf" width="40" height="40" />  
+                    </motion.div>
+                    <a href="/vincent-cv.pdf" download="vincent-cv.pdf">Resume</a>
+                </li>
+          </ul>
+          </CardContent>
+        </div>
+      </Card>
+</footer>
+
     </div>
   );
 }
