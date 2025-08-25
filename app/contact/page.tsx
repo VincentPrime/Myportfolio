@@ -12,7 +12,7 @@ import { SendIcon, Menu, X } from "lucide-react"
 import { useState } from "react"
 import { motion } from "framer-motion";
 import { Icon } from '@iconify-icon/react';
-import Link from "next/link"
+
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -30,7 +30,7 @@ export default function Contact() {
     setStatus("");
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/send-email`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
