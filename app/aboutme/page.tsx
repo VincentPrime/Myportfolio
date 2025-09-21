@@ -23,7 +23,7 @@ export default function Aboutme(){
                 
                 {/* Desktop Menu */}
                 <div className="hidden md:block">
-                    <ul className="flex gap-7 font-bold text-xl">
+                    <ul className="flex gap-7 font-bold text-lg md:text-2xl">
                         <li><a href="/"><ClickSpark>Home</ClickSpark></a></li>
                         <li><a href="/aboutme"><ClickSpark>About me</ClickSpark></a></li>
                         <li><a href="/contact"><ClickSpark>Contact me</ClickSpark></a></li>

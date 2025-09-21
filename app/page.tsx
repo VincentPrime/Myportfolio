@@ -87,9 +87,8 @@ export default function Home() {
           >
             <div>
                 <p className="font-extrabold text-lg sm:text-xl md:text-3xl lg:text-4xl leading-snug">
-                a <span className="text-amber-600">Web Developer </span>
-                and a Full-Stack Developer. I build modern, responsive, and
-                scalable applications that bring ideas to life.
+                a <span className="text-amber-600">Web Developer</span> passionate about creating modern, responsive, and scalable web applications. 
+                
               </p>
 
               {/* Shaking Button */}
@@ -134,7 +133,7 @@ export default function Home() {
       {/* Tech Stack Section */}
       <div className="px-6 md:px-40 py-20 text-black">
         <motion.div
-          className="justify-self-center border-4 rounded-2xl border-black p-5 hover:bg-orange-500 hover:text-white transition-colors duration-300 cursor-pointer"
+          className="justify-self-center border-2 rounded-2xl border-black p-5 hover:bg-orange-500 hover:text-white transition-colors duration-300 cursor-pointer"
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ amount: 0.2 }}
@@ -174,6 +173,36 @@ export default function Home() {
         </div>
       </div>
 
+      <div className="px-6 md:px-40 py-20 text-black">
+        <motion.div
+          className="justify-self-center border-2 rounded-2xl border-black p-5 hover:bg-orange-500 hover:text-white transition-colors duration-300 cursor-pointer"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <h2 className="text-2xl md:text-3xl font-bold">Currently Learning</h2>
+        </motion.div>
+
+        <div className="justify-self-center w-full">
+          <ul className="flex flex-col">
+            <motion.div
+              className="flex justify-evenly mb-10 mt-20 flex-wrap gap-6"
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ amount: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              <li><Image src="/mongo.png" alt="" width={150} height={150} /></li>
+              <li><Image src="/supabase.jpg" alt="" width={150} height={150} /></li>
+              <li><Image src="/reactnative.png" alt="" width={150} height={150} className="rounded-2xl" /></li>
+            </motion.div>
+
+           
+          </ul>
+        </div>
+      </div>
+
       {/* Projects Section */}
       <div className="text-white relative w-full min-h-screen overflow-x-hidden p-6 md:p-20">
         <div className="justify-self-center">
@@ -184,17 +213,83 @@ export default function Home() {
           <StarsBackground />
         </div>
 
-        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between text-white px-6 md:px-40 gap-10 mt-10">
-          <Card>
-            <CardHeader></CardHeader>
-          </Card>
-          <Card></Card>
-          <Card></Card>
+
+        <div className="flex flex-1 flex-col gap-10 p-4 mt-20">
+          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+            
+            <div className="bg-muted auto rounded-xl overflow-hidden p-2">
+              <div className="w-full"> 
+              <Image
+              src={'/ezprint.png'}
+              alt=""
+              width={500}
+              height={100}
+              className=" rounded-tl-3xl rounded-ee-lg rounded-es-lg rounded-tr-3xl "
+              />
+              </div>
+
+             <div className="flex gap-2 mt-2">
+               <div className=" rounded-3xl px-2 py-2 text-[#3A939A] bg-[#bcfcff] font-bold">
+                Frontend
+              </div>
+              
+              <div className=" rounded-3xl px-2 py-2 text-[#1ba5e0] bg-[#a0e2ff] font-bold">
+                UI/UX
+              </div>
+             </div>
+              
+            </div>
+
+            <div className="bg-muted h-auto rounded-xl overflow-hidden p-2">
+              <div className="w-full"> 
+              <Image
+              src={'/pagsasaka.png'}
+              alt=""
+              width={500}
+              height={100}
+              className=" rounded-tl-3xl rounded-ee-lg rounded-es-lg rounded-tr-3xl "
+              />
+              </div>
+
+              <div className="flex gap-2 mt-2">
+                <div className=" rounded-3xl px-2 py-2 text-[#3A939A] bg-[#bcfcff] font-bold">
+                  Frontend
+                </div>
+                
+              </div>
+            </div>
+
+            
+            <div className="bg-muted rounded-xl overflow-hidden p-2">
+              <div className="w-full"> 
+                <Image
+                  src="/creativ.png"
+                  alt=""
+                  width={500}   // keep width
+                  height={300}  // intrinsic height (still required)
+                  className="h-[194px] w-full object-cover rounded-tl-3xl rounded-tr-3xl rounded-ee-lg rounded-es-lg"
+                />
+                
+                 <div className="flex gap-2 mt-2">
+                <div className="rounded-3xl px-2 py-2 text-[#3A939A] bg-[#bcfcff] font-bold">
+                  UI DESIGN
+                </div>
+                
+              </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <div className="justify-self-center p-5 bg-[#fa4d4d] rounded-2xl mt-2 cursor-pointer">
+          <a href="/projects" className="font-medium">View all Projects</a>
         </div>
       </div>
 
 
-      <footer>
+    <footer>
       <Card className="bg-[#363636] w-full rounded-none border-none text-white p-10">
         <div className="flex flex-col md:flex-row justify-evenly">
           <CardContent>

@@ -61,7 +61,7 @@ export default function Contact() {
         </a>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex gap-7 font-bold text-xl">
+        <ul className="hidden md:flex gap-7 font-bold text-lg md:text-2xl">
           <li>
             <a href="/"><ClickSpark>Home</ClickSpark></a>
           </li>
@@ -108,45 +108,48 @@ export default function Contact() {
       <div className="relative z-10 flex flex-col-reverse md:flex-row px-6 md:px-40 mt-10 md:mt-20 gap-5">
         {/* Form */}
         <div className="w-full">
-          <Card className="bg-[#ff2121] text-white border-none">
+          <Card className="bg-[#f7f7f7] text-[#474545] border-none">
             <CardContent>
               <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                 <CardTitle className="font-bold text-3xl md:text-4xl">
                   Contact me!
                 </CardTitle>
 
-                <div>
-                  <Label className="font-bold">Name:</Label>
+                <div className="flex gap-2">
+
+                  <div className="w-[50%]">
+                  <Label className="font-bold">Full Name</Label>
                   <Input
                     type="text"
                     name="name"
-                    placeholder="Name:"
+                    placeholder="Enter your Fullname"
                     value={form.name}
                     onChange={handleChange}
-                    className="bg-white text-black mt-2"
+                    className="bg-white text-black mt-2 h-15"
                   />
                 </div>
 
-                <div>
-                  <Label>Email:</Label>
+                <div className="w-[50%]">
+                  <Label>Email Address</Label>
                   <Input
                     placeholder="Enter your Email"
                     type="email"
                     name="email"
                     value={form.email}
                     onChange={handleChange}
-                    className="bg-white text-black mt-2"
+                    className="bg-white text-black mt-2 h-15"
                   />
+                </div>
                 </div>
 
                 <div>
-                  <Label>Message:</Label>
+                  <Label>Message</Label>
                   <Textarea
                     name="message"
                     placeholder="Your Message"
                     value={form.message}
                     onChange={handleChange}
-                    className="bg-white text-black mt-2"
+                    className="bg-white text-black mt-2 h-30"
                   />
                 </div>
 
