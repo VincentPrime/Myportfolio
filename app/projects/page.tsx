@@ -70,7 +70,7 @@ export default function Projects() {
           <StarsBackground />
         </div>
       {/* Foreground Content */}
-        <div className="relative z-10 md:flex-row items-center justify-between text-white px-6 md:px-40 mt-20 gap-20">
+      <div className="relative z-10 md:flex-row items-center justify-between text-white px-6 md:px-40 mt-20 gap-20">
             {/* Text Section */}
             <div className="max-w-6xl">
                 <span className="font-bold text-4xl">Projects</span>
@@ -92,8 +92,14 @@ export default function Projects() {
                                 <h1 className="font-bold text-2xl">Vincent Fillar</h1>
                                 <div className=" ml-5 px-2 rounded-4xl pt-0.5 text-[#1ba5e0] bg-[#a0e2ff]">Frontend</div>
                             </span>
-                            <h2 className="text-20 text-[#605e5e]">Nov 9 2024</h2>
+                            <h2 className="text-20 text-[#605e5e]">Apr 8 2025</h2>
                             </div>  
+                </div>
+                <div>
+                  <p>I am one of the people who created the frontend and UI design for our capstone project, 
+                    which is used for quick printing of documents, PDFs, pictures, and more. 
+                    I used Figma for the design and React.js to build the frontend.
+                  </p>
                 </div>
 
                 <div className="w-full  relative h-[500px]">
@@ -158,8 +164,13 @@ export default function Projects() {
                                 <h1 className="font-bold text-2xl">Vincent Fillar</h1>
                                 <div className=" ml-5 px-2 rounded-4xl pt-0.5 text-[#1ba5e0] bg-[#a0e2ff]">Frontend</div>
                             </span>
-                            <h2 className="text-20 text-[#605e5e]">Nov 9 2024</h2>
+                            <h2 className="text-20 text-[#605e5e]">Aug 22, 2025</h2>
                             </div>  
+                </div>
+                <div>
+                  <p>I contributed to the development of the concept and planning of the application, 
+                    including how it would be implemented. I also assisted in designing and developing 
+                    the front-end portion of the project.</p>
                 </div>
 
                 <div className="w-full  relative h-[500px]">
@@ -223,7 +234,9 @@ export default function Projects() {
                             <h2 className="text-20 text-[#605e5e]">Nov 9 2023</h2>
                             </div>  
                 </div>
-
+                <div>
+                  <p>When I was in college, I created a simple UI design that showcased the different organizations of CIT BulSU.”</p>
+                </div>
                 <div className="w-full  relative h-[500px]">
                     <video 
                         src="/figma.mp4" 
@@ -252,8 +265,12 @@ export default function Projects() {
                                 <h1 className="font-bold text-2xl">Vincent Fillar</h1>
                                 <div className=" ml-5 px-2 rounded-4xl pt-0.5 text-[#e01b1b] bg-[#ffa0a0]">Fullstack</div>
                             </span>
-                            <h2 className="text-20 text-[#605e5e]">Nov 21 2025</h2>
+                            <h2 className="text-20 text-[#605e5e]">Sept 1 2025</h2>
                             </div>  
+                </div>
+                <div>
+                  <p>I developed a full-stack Web application where users can download books as long as they sign up. 
+                    For now, I haven’t added the pictures, titles, and authors yet</p>
                 </div>
 
                 <div className="w-full  relative h-[500px]">
@@ -295,10 +312,78 @@ export default function Projects() {
                             </div>
                         </div>
                     </div>
-            </Card> 
-        
-        </div>
+            </Card>
 
+            <div>
+              <p className="font-bold text-4xl">Currently Working</p>
+            </div>
+            
+            <Card className="mt-5 p-5 mb-10">
+                <div className="flex gap-4">
+                            <div className="rounded-full w-15 h-15 border overflow-hidden">
+                                <Image
+                                src="/vincent.png"
+                                alt=""
+                                width={100}
+                                height={100}
+                                />
+                            
+                            </div>
+                            <div>
+                            <span className="flex">
+                                <h1 className="font-bold text-2xl">Vincent Fillar</h1>
+                                <div className=" ml-5 px-2 rounded-4xl pt-0.5 text-[#e01b1b] bg-[#ffa0a0]">Fullstack</div>
+                            </span>
+                            <h2 className="text-20 text-[#605e5e]">Sept 23 2025</h2>
+                            </div>  
+                </div>
+                <div>
+                  <p>
+                    I am currently developing a full-stack mobile application using React Native for the front end and 
+                    Node.js/Express for the back end. This application is designed to assist residents within a specific barangay 
+                    where it will be deployed. Its primary objective is to enable users to send photos and reports of incidents — 
+                    such as flooding, fallen trees, and other emergencies — that require an immediate response from barangay officials. 
+                  </p>
+                </div>
+
+              <div className="w-full h-[500px] bg-muted flex items-center justify-center rounded-lg overflow-hidden">
+                <video
+                  src="/calamityvid.mp4"
+                  className="max-h-full max-w-full object-contain"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              </div>
+
+
+              <div className="flex flex-1 flex-col gap-4 p-4">
+                <div className="grid auto-rows-min gap-4 md:grid-cols-3">
+                  {[
+                    "/calimity1.jpg",
+                    "/calamity2.jpg",
+                    "/calamity3.jpg",
+                  ].map((src, i) => (
+                    <div
+                      key={i}
+                      className="bg-muted/50 aspect-video rounded-xl relative overflow-hidden"
+                    >
+                      <Image
+                        src={src}
+                        alt=""
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </Card> 
+          
+        </div>
+        
 
       </div>
     
