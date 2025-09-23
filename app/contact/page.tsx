@@ -30,7 +30,7 @@ export default function Contact() {
     setStatus("");
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/send-email`, {
+      const res = await fetch(`https://myportfoliobackend-1-uyui.onrender.com/api/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
