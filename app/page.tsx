@@ -100,7 +100,7 @@ export default function Home() {
                 <a href="/contact"><ClickSpark>Hire me</ClickSpark></a>
               </motion.button>
 
-              <a href="/vincent-cv.pdf" download="vincent-cv.pdf">
+              <a href="/VincentCv.pdf" download="VincentCv.pdf">
                 <span className="font-bold ml-2 hover:border-b cursor-pointer text-sm sm:text-base md:text-lg">
                   Download CV
                 </span>
